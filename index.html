@@ -151,7 +151,7 @@ p{margin:0}
 .wave{display:block; width:100%; height:auto; margin-top:clamp(1.5rem,4vw,3rem)}
 .wave path{fill:none; stroke:var(--blue); stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round}
 .wave .wave__echo{stroke:rgba(77,123,178,.22); stroke-width:2}
-.wave__labels{display:flex; justify-content:space-between; max-width:var(--wrap); margin:.4rem auto 0;
+.wave__labels{display:flex; justify-content:space-between; margin-top:.6rem;
   font-size:.78rem; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; font-weight:600}
 .wave__labels span:last-child{color:var(--blue)}
 
@@ -176,7 +176,7 @@ p{margin:0}
 .reassure svg{width:22px;height:22px;color:var(--blue);flex:none;margin-top:.15rem}
 
 /* ============ НАПРАВЛЕНИЯ ============ */
-.grid-dir{display:grid; grid-template-columns:repeat(auto-fill,minmax(255px,1fr)); gap:clamp(.9rem,2vw,1.25rem)}
+.grid-dir{display:grid; grid-template-columns:1.35fr 1fr 1fr 1fr; gap:clamp(.9rem,2vw,1.25rem)}
 .dir{
   background:var(--cream-soft); border:1px solid var(--line); border-radius:var(--r-card);
   padding:1.5rem 1.5rem 1.6rem; box-shadow:var(--shadow-sm);
@@ -192,6 +192,22 @@ p{margin:0}
 .dir__ic svg{width:22px;height:22px}
 .dir h3{font-size:1.22rem; letter-spacing:-.02em}
 .dir p{margin-top:.5rem; color:var(--muted); font-size:.98rem; line-height:1.6}
+.dir--feature{grid-row:span 2; background:linear-gradient(155deg,var(--blue),var(--blue-deep)); color:#fff; border:0;
+  display:flex; flex-direction:column; justify-content:space-between; gap:1.5rem}
+.dir--feature::after{display:none}
+.dir--feature .dir__ic{width:46px;height:46px;background:rgba(255,255,255,.16);color:#fff}
+.dir--feature .dir__ic svg{width:24px;height:24px}
+.dir--feature .dir__eyebrow{margin:0 0 .5rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#C3D5EA;font-weight:600}
+.dir--feature h3{font-size:clamp(1.4rem,1.1rem + 1vw,1.95rem);color:#fff}
+.dir--feature p{margin-top:.55rem;color:#DCE7F3;font-size:1.02rem;line-height:1.6}
+@media (max-width:980px){
+  .grid-dir{grid-template-columns:repeat(2,1fr)}
+  .dir--feature{grid-row:auto; grid-column:1 / -1}
+}
+@media (max-width:560px){
+  .grid-dir{grid-template-columns:1fr}
+  .dir--feature{grid-column:auto}
+}
 
 /* ============ КАК РАБОТАЕМ ============ */
 .grid-app{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:clamp(1rem,2.4vw,1.6rem)}
@@ -252,12 +268,14 @@ p{margin:0}
   letter-spacing:.01em}
 
 /* ============ ОТЗЫВЫ ============ */
-.rev-note{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between;
+.rev-note{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.3rem;
   background:var(--cream-soft);border:1px solid var(--line);border-radius:var(--r-card);
-  padding:clamp(1.3rem,1rem+2vw,2rem);box-shadow:var(--shadow-sm)}
-.rev-note p{color:var(--muted);max-width:48ch}
+  padding:clamp(1.8rem,1.4rem + 2.5vw,3rem);box-shadow:var(--shadow-sm)}
+.rev-note__stars{display:flex;gap:.3rem;color:var(--blue)}
+.rev-note__stars svg{width:22px;height:22px}
+.rev-note p{color:var(--muted);max-width:52ch;font-size:1.05rem}
 .rev-note strong{color:var(--ink);font-family:'Bounded',sans-serif;font-weight:700}
-.rev-note__btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.rev-note__btns{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
 
 /* ============ ФИНАЛЬНЫЙ CTA ============ */
 .cta-final{text-align:center}
@@ -366,7 +384,7 @@ p{margin:0}
       <path class="wave__echo" id="waveEcho" d=""/>
       <path class="wave__main" id="waveMain" d=""/>
     </svg>
-    <div class="wrap wave__labels" aria-hidden="true">
+    <div class="wave__labels" aria-hidden="true">
       <span>неясная речь</span><span>ясная речь →</span>
     </div>
   </div>
@@ -414,10 +432,13 @@ p{margin:0}
       <h2 class="h2" id="dir-h">Всё для развития речи — в одном центре</h2>
     </div>
     <div class="grid-dir">
-      <article class="dir reveal">
+      <article class="dir dir--feature reveal">
         <div class="dir__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-6 4 14 3-9 2 3h4"/></svg></div>
-        <h3>Логопедия</h3>
-        <p>Диагностика и коррекция речевых нарушений: ставим звуки, запускаем и развиваем речь.</p>
+        <div>
+          <p class="dir__eyebrow">Основное направление</p>
+          <h3>Логопедия</h3>
+          <p>Диагностика и коррекция речевых нарушений: ставим звуки, запускаем и развиваем речь у детей любого возраста.</p>
+        </div>
       </article>
       <article class="dir reveal">
         <div class="dir__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14s1.5-2 8-2 8 2 8 2"/><path d="M4 10s1.5 2 8 2 8-2 8-2"/><path d="M12 3v18"/></svg></div>
@@ -572,7 +593,14 @@ p{margin:0}
       <h2 class="h2" id="rev-h">20 000 семей уже прошли этот путь</h2>
     </div>
     <div class="rev-note reveal">
-      <p><strong>Отзывы подтянем сюда</strong> из карточек 2ГИС и Яндекс.Карт — живые, с реальными оценками. А пока прочитать их можно прямо на картах.</p>
+      <div class="rev-note__stars" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2Z"/></svg>
+      </div>
+      <p><strong>Живые отзывы — на картах.</strong> Реальные оценки родителей можно прочитать прямо в карточках 2ГИС и Яндекс.Карт.</p>
       <div class="rev-note__btns">
         <a class="btn btn--ghost btn--sm" href="https://yandex.ru/maps/?text=ЯСНО центр развития речи Грозный" target="_blank" rel="noopener">Отзывы в Яндексе</a>
         <a class="btn btn--ghost btn--sm" href="https://2gis.ru/search/ЯСНО центр развития речи Грозный" target="_blank" rel="noopener">Отзывы в 2ГИС</a>
