@@ -226,14 +226,16 @@ p{margin:0}
 }
 .step__wave{position:absolute; right:-4%; top:-30%; width:min(60%,520px); opacity:.16; pointer-events:none}
 .step__wave path{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round}
-.step__in{position:relative; z-index:2; max-width:60ch}
-.step h2{font-size:clamp(1.5rem,1.1rem+2vw,2.3rem); color:#fff}
-.step p{margin-top:1rem; color:#DCE7F3}
-.step__price{display:inline-flex; align-items:baseline; gap:.55rem; margin-top:1.5rem;
-  padding:.55rem 1.15rem; border:1.5px solid rgba(255,255,255,.28); border-radius:var(--r-pill);
-  color:#DCE7F3; font-size:.98rem; font-weight:600}
-.step__price b{font-family:'Bounded',sans-serif; font-weight:800; font-size:1.5rem; color:#fff; letter-spacing:-.02em}
-.step__cta{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.8rem}
+.step__grid{position:relative; z-index:2; display:grid; grid-template-columns:1.2fr .85fr; gap:clamp(1.5rem,1rem + 3vw,3rem); align-items:center}
+.step h2{font-size:clamp(1.5rem,1.1rem + 2vw,2.3rem); color:#fff}
+.step__text p{margin-top:1rem; color:#DCE7F3}
+.step__panel{background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.2); border-radius:var(--r-card);
+  padding:clamp(1.4rem,1rem + 2vw,2rem); display:flex; flex-direction:column; gap:1.15rem}
+.step__price-big{display:flex; flex-direction:column; gap:.2rem}
+.step__price-big b{font-family:'Bounded',sans-serif; font-weight:800; font-size:clamp(2rem,1.5rem + 2vw,2.9rem); color:#fff; letter-spacing:-.03em; line-height:1}
+.step__price-big span{color:#C3D5EA; font-size:.95rem; font-weight:600}
+.step__cta{display:flex; flex-direction:column; gap:.6rem}
+@media (max-width:760px){ .step__grid{grid-template-columns:1fr; gap:1.6rem} }
 
 /* ============ ФИЛИАЛЫ ============ */
 .grid-loc{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(1rem,2.4vw,1.5rem)}
@@ -498,17 +500,21 @@ p{margin:0}
   <div class="wrap">
     <div class="step reveal">
       <svg class="step__wave" viewBox="0 0 400 120" aria-hidden="true"><path d="M0 60 Q 25 10 50 60 T 100 60 T 150 60 T 200 60 T 250 60 T 300 60 T 350 60 T 400 60"/></svg>
-      <div class="step__in">
-        <p class="eyebrow">С чего начать</p>
-        <h2 id="step-h">Первый визит — диагностическая консультация</h2>
-        <p>Специалист оценивает речь и развитие ребёнка, отвечает на ваши вопросы и составляет индивидуальный план работы. Записаться можно по телефону или в WhatsApp — подберём удобное время.</p>
-        <p class="step__price"><b>2000 ₽</b> первичная консультация</p>
-        <div class="step__cta">
-          <a class="btn btn--onblue" href="tel:+79288860394">Записаться по телефону</a>
-          <a class="btn btn--wa" href="https://wa.me/79389984060?text=Здравствуйте!%20Хочу%20записаться%20на%20первичную%20консультацию." target="_blank" rel="noopener">
+      <div class="step__grid">
+        <div class="step__text">
+          <p class="eyebrow">С чего начать</p>
+          <h2 id="step-h">Первый визит — диагностическая консультация</h2>
+          <p>Специалист оценивает речь и развитие ребёнка, отвечает на ваши вопросы и составляет индивидуальный план работы. Записаться можно по телефону или в WhatsApp — подберём удобное время.</p>
+        </div>
+        <div class="step__panel">
+          <div class="step__price-big"><b>2000 ₽</b><span>первичная консультация</span></div>
+          <div class="step__cta">
+          <a class="btn btn--onblue btn--block" href="tel:+79288860394">Записаться по телефону</a>
+          <a class="btn btn--wa btn--block" href="https://wa.me/79389984060?text=Здравствуйте!%20Хочу%20записаться%20на%20первичную%20консультацию." target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.94 4.44-9.94 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.73 1.2h.01c5.49 0 9.94-4.44 9.94-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.02c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.24-3.3-.69-2.78-1.1-4.56-3.94-4.7-4.13-.14-.19-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.29.25-.28.55-.35.73-.35l.53.01c.17.01.4-.06.62.48.24.57.8 1.98.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.29-.12.57.16.28.72 1.18 1.54 1.91 1.06.95 1.95 1.24 2.23 1.38.28.14.44.12.6-.07.17-.19.69-.8.87-1.08.18-.28.36-.23.61-.14.25.09 1.61.76 1.89.9.28.14.46.21.53.32.07.12.07.68-.17 1.36Z"/></svg>
             Написать в WhatsApp
           </a>
+          </div>
         </div>
       </div>
     </div>
