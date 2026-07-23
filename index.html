@@ -195,10 +195,10 @@ p{margin:0}
 .reassure svg{width:22px;height:22px;color:var(--blue);flex:none;margin-top:.15rem}
 
 /* ============ НАПРАВЛЕНИЯ ============ */
-.grid-dir{display:grid; grid-template-columns:1.35fr 1fr 1fr 1fr; gap:clamp(.9rem,2vw,1.25rem)}
+.grid-dir{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.9rem,2vw,1.25rem)}
 .dir{
   background:var(--cream-soft); border:1px solid var(--line); border-radius:var(--r-card);
-  padding:1.5rem 1.5rem 1.6rem; box-shadow:var(--shadow-sm);
+  padding:1.3rem 1.3rem 1.4rem; min-width:0; box-shadow:var(--shadow-sm);
   transition:transform .25s var(--ease-spring), box-shadow .3s; position:relative; overflow:hidden;
 }
 .dir::after{content:""; position:absolute; left:1.5rem; right:1.5rem; bottom:0; height:3px;
@@ -209,23 +209,25 @@ p{margin:0}
 .dir__ic{width:40px;height:40px;border-radius:12px;background:var(--blue-wash);color:var(--blue);
   display:grid;place-items:center;margin-bottom:1rem}
 .dir__ic svg{width:22px;height:22px}
-.dir h3{font-size:1.22rem; letter-spacing:-.02em}
-.dir p{margin-top:.5rem; color:var(--muted); font-size:.98rem; line-height:1.6}
-.dir--feature{grid-row:span 2; background:linear-gradient(155deg,#3E6597,var(--blue-deep)); color:#fff; border:0;
-  display:flex; flex-direction:column; justify-content:space-between; gap:1.5rem}
+.dir h3{font-size:1.18rem; letter-spacing:-.02em; overflow-wrap:break-word}
+.dir p{margin-top:.5rem; color:var(--muted); font-size:.98rem; line-height:1.6; overflow-wrap:break-word}
+.dir--feature{grid-column:1 / -1; background:linear-gradient(120deg,#3E6597,var(--blue-deep)); color:#fff; border:0;
+  display:flex; flex-direction:row; align-items:center; gap:clamp(1.3rem,3vw,2.6rem)}
 .dir--feature::after{display:none}
-.dir--feature .dir__ic{width:46px;height:46px;background:rgba(255,255,255,.16);color:#fff}
-.dir--feature .dir__ic svg{width:24px;height:24px}
-.dir--feature .dir__eyebrow{margin:0 0 .5rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#C3D5EA;font-weight:600}
-.dir--feature h3{font-size:clamp(1.4rem,1.1rem + 1vw,1.95rem);color:#fff}
-.dir--feature p{margin-top:.55rem;color:#DCE7F3;font-size:1.02rem;line-height:1.6}
+.dir--feature .dir__ic{flex:none;width:52px;height:52px;background:rgba(255,255,255,.16);color:#fff;margin-bottom:0}
+.dir--feature .dir__ic svg{width:26px;height:26px}
+.dir--feature__head{flex:none}
+.dir--feature .dir__eyebrow{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#C3D5EA;font-weight:600}
+.dir--feature h3{font-size:clamp(1.5rem,1.2rem + 1vw,2rem);color:#fff}
+.dir--feature__desc{flex:1;margin:0;color:#E9F0F8;font-size:1.05rem;line-height:1.6;max-width:56ch;overflow-wrap:break-word}
 @media (max-width:980px){
   .grid-dir{grid-template-columns:repeat(2,1fr)}
-  .dir--feature{grid-row:auto; grid-column:1 / -1}
+}
+@media (max-width:700px){
+  .dir--feature{flex-direction:column; align-items:flex-start; gap:1rem}
 }
 @media (max-width:560px){
   .grid-dir{grid-template-columns:1fr}
-  .dir--feature{grid-column:auto}
 }
 
 /* ============ КАК РАБОТАЕМ ============ */
@@ -463,11 +465,11 @@ p{margin:0}
     <div class="grid-dir">
       <article class="dir dir--feature reveal">
         <div class="dir__ic"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-6 4 14 3-9 2 3h4"/></svg></div>
-        <div>
+        <div class="dir--feature__head">
           <p class="dir__eyebrow">Основное направление</p>
           <h3>Логопедия</h3>
-          <p>Диагностика и коррекция речевых нарушений: ставим звуки, запускаем и развиваем речь у детей любого возраста.</p>
         </div>
+        <p class="dir--feature__desc">Диагностика и коррекция речевых нарушений: ставим звуки, запускаем и развиваем речь у детей любого возраста.</p>
       </article>
       <article class="dir reveal">
         <div class="dir__ic"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14s1.5-2 8-2 8 2 8 2"/><path d="M4 10s1.5 2 8 2 8-2 8-2"/><path d="M12 3v18"/></svg></div>
